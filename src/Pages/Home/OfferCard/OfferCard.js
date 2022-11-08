@@ -3,7 +3,7 @@ import offer from '../../../assests/offer/offer1.jpeg';
 
 const OfferCard = () => {
     return (
-        <div className="card m-8 p-6 w-100% bg-base-100 shadow-xl">
+        <div className="mb-20 card m-8 p-6 w-100% bg-base-100 shadow-xl">
             {/* <figure  className='w-100%'></figure> */}
             <img className='max-h-96 p-20 rounded-md' src={offer} alt="Shoes" />
             <div className="card-body">
