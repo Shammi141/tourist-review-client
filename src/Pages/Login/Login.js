@@ -1,12 +1,15 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
+
 
 const Login = () => {
 
     const {login, providerLogin} = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    useTitle('Login');
     const googleProvider = new GoogleAuthProvider();
 
     //for google login 
@@ -15,6 +18,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate('/');
         })
         .catch(err => console.error(err));
     }
@@ -30,6 +34,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             form.reset();
+            navigate('/');
         })
         .catch(err => console.error(err));
     }

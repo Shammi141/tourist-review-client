@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const AddReview = () => {
+    useTitle('Add Review');
     const {title, _id} = useLoaderData();
     //for getting user info
     const {user} = useContext(AuthContext); 
@@ -35,7 +37,7 @@ const AddReview = () => {
         .then(data => {
             console.log(data)
             if(data.acknowledged){
-                alert('Thanks For Giving Your Review');
+                alert('Thanks for Giving Your Review');
                 form.reset();
             }
         })
