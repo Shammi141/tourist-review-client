@@ -6,7 +6,6 @@ import ReviewRow from '../Home/Home/ServicesDetails/ReviewRow';
 const MyReview = () => {
     useTitle('Reviews');
 
-
     //for showing users reviews
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
@@ -39,7 +38,7 @@ const MyReview = () => {
 
     return (
         <div>
-            <h2 className='text-xl'>You have {} reviews</h2>
+            <h2 className='text-xl'>You have {reviews.length} reviews</h2>
             <div>
 
                 <div className="overflow-x-auto w-full">
