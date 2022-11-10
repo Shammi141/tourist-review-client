@@ -15,6 +15,7 @@ const AddReview = () => {
         const name = `${form.name.value}`;
         const email = user?.email || 'unregisterd';
         const message = form.message.value;
+        const time = new Date();
         const image = user.photoURL;
         console.log(user.photoURL)
 
@@ -24,7 +25,9 @@ const AddReview = () => {
             reviewerName: name,
             email,
             image,
-            message
+            message,
+            title,
+            time
         }
 
         fetch('http://localhost:5000/reviews', {

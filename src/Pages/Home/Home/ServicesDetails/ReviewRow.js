@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ReviewRow = ({review, handelDelete}) => {
-    const {reviewerName, email, image, message, _id} = review;
+    const {reviewerName, email, image, message, _id, title} = review;
     
     return (
         <div>
             <tr>
                 <th>
                     <label>
-                        <button onClick={() => handelDelete(_id)} className='btn'>X</button>
+                        <button onClick={() => handelDelete(_id)} className='btn'>Delete</button>
                     </label>
                 </th>
                 <td >
@@ -37,18 +37,19 @@ const ReviewRow = ({review, handelDelete}) => {
                             </div>
                         </div>
                         <div>
-                            <div className="font-bold">{reviewerName}</div>
-                            <div className="text-sm opacity-50">{email}</div>
+                            <div className="font-bold">Name: {reviewerName}</div>
+                            <div className="text-sm opacity-50">Email: {email}</div>
+                            <div className="text-sm opacity-50">Title: {title}</div>
                         </div>
                     </div>
                 </td>
                 <td>
-                    {message}
+                    Review: {message}
                 <br/>
                 </td>
                 <th>
                     <Link to = {`/editreview/${_id}`}>
-                        <button className="btn btn-info btn-xs">Edit</button>
+                        <button className="btn btn-info btn-xs">Edit Review</button>
                     </Link>
                 </th>
             </tr>

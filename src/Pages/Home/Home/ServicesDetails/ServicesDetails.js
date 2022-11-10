@@ -42,19 +42,13 @@ const ServicesDetails = () => {
                     {
                         reviews.length >0 ?
                         <table className="table w-full">
-                        <thead>
-                            <tr className='flex space-x-24'>
-                            <th>Name</th>
-                            <th>Review</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         {
                             reviews &&
                             reviews.map(review =>{
 
-                                return <tr>
-                                    <td>
+                                return <tr className=''>
+                                    <td className=''>
                                      {
                                         user && user?.photoURL !== null ?
                                             <>
@@ -67,7 +61,7 @@ const ServicesDetails = () => {
                                             :
                                             <>
                                             <div className="avatar">
-                                                <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                <div className="w-14  rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                                     <img src={`https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?b=1&s=170667a&w=0&k=20&c=-qQGlKM8OQsSJCEkHnqS9FI94VRTkZ-7tg0K0u02XL0=`} alt="avatar" />
                                                 </div>
                                             </div>
@@ -76,8 +70,8 @@ const ServicesDetails = () => {
 
                                     </td>
 
-                                        <td>{review.reviewerName}</td>
-                                        <td>{review.message}</td>
+                                        <td className='ms-0'>Reviewer Name: {review.reviewerName}</td>
+                                        <td>Review: {review.message}</td>
                                     </tr>
                                 })
                         }
