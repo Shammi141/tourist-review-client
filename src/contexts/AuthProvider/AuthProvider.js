@@ -7,7 +7,6 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
-    // const user = {displayName: 'Ami'}
 
     const [user, setUser] =useState(null);
     const [loading, setLoading] = useState(true);
@@ -18,12 +17,13 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider);
     }
 
-    //email password login
+    //creating new user
     const createUser = (email, password) =>{
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
+    //login
     const login = (email, password) =>{
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);

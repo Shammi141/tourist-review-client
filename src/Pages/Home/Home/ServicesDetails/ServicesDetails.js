@@ -60,18 +60,21 @@ const ServicesDetails = () => {
 
 {/*All review section */}
             <h3 className="font-semibold mb-6 px-20 text-2xl text-purple-700">Reviews of the service</h3>
-            <div>
-                
-                <h2 className='text-xl'>This service has {reviews.length} reviews</h2>
+            {/* <div>
+                    {
+                        reviews === 0 &&
+                        <p className='text-xl mx-auto'>No Review Here</p>
+                    }
+            </div> */}
 
-                <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                             <thead>
-                        <tr>
+                        <tr className='flex space-x-24'>
                             <th>Delete</th>
                             <th>Name</th>
                             <th>Review</th>
-                            <th></th>
+                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -88,7 +91,7 @@ const ServicesDetails = () => {
                         </tbody>
                     </table>
                 </div>
-            </div>
+            
         </div>
     );
 };
