@@ -43,15 +43,7 @@ const MyReview = () => {
 
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
-                            <thead>
-                        {/* <tr className='flex space-x-24'>
-                            <th>Delete</th>
-                            <th>Name</th>
-                            <th>Review</th>
-                            <th>Title</th>
-                            <th>Edit</th>
-                        </tr> */}
-                        </thead>
+                           
                         <tbody>
                         {
                             reviews &&
