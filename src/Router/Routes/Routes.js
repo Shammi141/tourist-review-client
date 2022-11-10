@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         {
             path: '/services/:id',
             element: <ServicesDetails></ServicesDetails>,
-            loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+            loader: ({params}) => fetch(`https://tourist-review-server.vercel.app/services/${params.id}`)
         },
         {
             path: '/services/addreview/:id',
@@ -38,14 +38,14 @@ const router = createBrowserRouter([
             <PrivateRoute>
                 <AddReview></AddReview>
             </PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+            loader: ({params}) => fetch(`https://tourist-review-server.vercel.app/services/${params.id}`)
         },
         {
             path: '/editreview/:id',
             element: <PrivateRoute>
                 <EditReview></EditReview>
             </PrivateRoute>,
-            loader: async({params}) => await fetch(`http://localhost:5000/reviews/${params.id}`)
+            loader: async({params}) => await fetch(`https://tourist-review-server.vercel.app/reviews/${params.id}`)
         },
         {
             path:'/addservice',
