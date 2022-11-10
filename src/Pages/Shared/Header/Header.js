@@ -4,8 +4,6 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const {user, logOut} = useContext(AuthContext);
-
-    
     const handelLogOut = () =>{
         logOut()
         .then(() => {})
@@ -25,7 +23,6 @@ const Header = () => {
             </>
             :
             <li><Link to= '/login'>Login</Link></li>
-
         }
     </>
 
@@ -48,11 +45,6 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                {/* <Link to ='/login'>
-                    <button className="btn btn-outline btn-primary">Login</button>
-                </Link> */}
             </div>
         </div>
     );

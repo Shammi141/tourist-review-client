@@ -9,8 +9,7 @@ const ServiceCard = ({service}) => {
         <div className="card card-compact w-86 bg-base-100 shadow-xl">
 
             <PhotoProvider>
-                <PhotoView src= {img} className="w-96 h-80">
-
+                <PhotoView src= {img}>
                     <figure><img className='h-52' src={img} alt="Shoes"/></figure>
                 </PhotoView>
             </PhotoProvider>
@@ -25,7 +24,6 @@ const ServiceCard = ({service}) => {
                         <p>{description.slice(0, 100) + '...'}</p>
                         :
                         <p>{description}</p>
-
                     }
                 </p>
                 <Link to ={`/services/${_id}`} className="card-actions justify-end">

@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../../hooks/useTitle';
-import ReviewRow from './ReviewRow';
 
 const ServicesDetails = () => {
     useTitle('Details & Reviews');
@@ -15,31 +14,10 @@ const ServicesDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`http://localhost:5000/servicesreviews/${_id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
-    },[user?.email]);
-
-    //for deletion
-    const handelDelete = id =>{
-        const proceed = window.confirm('Are you sure that you want to delete the review?');
-        if(proceed){
-            fetch(`http://localhost:5000/reviews/${id}`, {
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.deletedCount > 0){
-                    alert('Deleted Successfully');
-                    const remaining = reviews.filter(rev => rev._id !== id);
-                    setReviews(remaining);
-                }
-            })
-            .catch(err => console.error(err))
-        }
-    }
-
+    },[]);
 
     return (
         <div className='mb-10'>
@@ -60,37 +38,55 @@ const ServicesDetails = () => {
 
 {/*All review section */}
             <h3 className="font-semibold mb-6 px-20 text-2xl text-purple-700">Reviews of the service</h3>
-            {/* <div>
-                    {
-                        reviews === 0 &&
-                        <p className='text-xl mx-auto'>No Review Here</p>
-                    }
-            </div> */}
-
             <div className="overflow-x-auto w-full">
-                    <table className="table w-full">
-                            <thead>
-                        <tr className='flex space-x-24'>
-                            <th>Delete</th>
+                    {
+                        reviews.length >0 ?
+                        <table className="table w-full">
+                        <thead>
+                            <tr className='flex space-x-24'>
                             <th>Name</th>
                             <th>Review</th>
-                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             reviews &&
-                            reviews.map(review => <ReviewRow
-                            key={review._id}
-                            review = {review}
-                            handelDelete = {handelDelete}
-                            ></ReviewRow>
+                            reviews.map(review =>{
 
-                            )
+                                return <tr>
+                                    <td>
+                                     {
+                                        user && user?.photoURL !== null ?
+                                            <>
+                                                <div className="avatar">
+                                                    <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                        <img src={user.photoURL} alt="user img"/>
+                                                    </div>
+                                                </div>
+                                            </>
+                                            :
+                                            <>
+                                            <div className="avatar">
+                                                <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                                    <img src={`https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?b=1&s=170667a&w=0&k=20&c=-qQGlKM8OQsSJCEkHnqS9FI94VRTkZ-7tg0K0u02XL0=`} alt="avatar" />
+                                                </div>
+                                            </div>
+                                            </> 
+                                     }
+
+                                    </td>
+
+                                        <td>{review.reviewerName}</td>
+                                        <td>{review.message}</td>
+                                    </tr>
+                                })
                         }
                         </tbody>
-                    </table>
-                </div>
+                        </table>
+                        :
+                        <pc className="text-">No reviews here</pc>
+                    }
+            </div>
             
         </div>
     );
